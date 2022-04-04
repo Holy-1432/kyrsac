@@ -46,7 +46,7 @@ namespace kyrsac.Pages
             DB.Connection.клиент.Add(u);
             DB.Connection.SaveChanges();
 
-
+            //ggggg
 
         }
 
