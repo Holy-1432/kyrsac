@@ -1,0 +1,23 @@
+﻿<Page x:Class="kyrsac.Pages.AddTovarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsac.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddTovarPage">
+
+    <Grid Background="Gray">
+        <Label Content="Добавление товара" HorizontalAlignment="Left" Margin="247,10,0,0" VerticalAlignment="Top" Height="70" Width="292" FontSize="30"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="TipBox" Text="{Binding Myтовар.тип}"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NameBox" Text="{Binding Myтовар.название}"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,184,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="XaraktBox" Text="{Binding Myтовар.характеристика}"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,236,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="IzgBox" Text="{Binding Myтовар.изготовитель}"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,286,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NalichieBox" Text="{Binding Myтовар.наличие_на_складе}"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,335,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="ChenaBox" Text="{Binding Myтовар.цена}"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="544,165,0,0" VerticalAlignment="Top" Width="140" x:Name="SaveTovarBt" Click="SaveTovarBt_Click" Height="29"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="544,236,0,0" VerticalAlignment="Top" Width="140" x:Name="EditTovarBt" Click="EditTovarBt_Click" Height="29"/>
+
+    </Grid>
+</Page>

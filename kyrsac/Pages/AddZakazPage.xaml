@@ -1,0 +1,21 @@
+﻿<Page x:Class="kyrsac.Pages.AddZakazPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsac.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddZakazPage">
+
+    <Grid Background="Gray">
+        <Label Content="Код клиента" HorizontalAlignment="Left" Margin="302,26,0,0" VerticalAlignment="Top" Width="271"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="302,70,0,0" TextWrapping="Wrap" x:Name="KodTB" VerticalAlignment="Top" Width="271"/>
+        <Label Content="Дата заказа" HorizontalAlignment="Left" Margin="302,112,0,0" VerticalAlignment="Top" Width="271"/>
+        <Label Content="Место доставки" HorizontalAlignment="Left" Margin="302,220,0,0" VerticalAlignment="Top" Width="271"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="302,246,0,0" TextWrapping="Wrap" x:Name="MestoBT" VerticalAlignment="Top" Width="271"/>
+        <DatePicker HorizontalAlignment="Left" Margin="302,163,0,0" VerticalAlignment="Top" Width="271" Height="39" x:Name="DataZak"/>
+        <Button Content="Сохранить" x:Name="SaveBt" Click="SaveBt_Click" HorizontalAlignment="Left" Margin="302,316,0,0" VerticalAlignment="Top" Width="271" Height="24"/>
+
+    </Grid>
+</Page>

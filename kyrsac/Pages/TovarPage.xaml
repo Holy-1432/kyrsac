@@ -1,0 +1,66 @@
+﻿<Page x:Class="kyrsac.Pages.TovarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsac.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TovarPage">
+
+    <Grid Background="Gray">
+        <DataGrid x:Name="TovarGrid" Margin="0,66,10,10"  AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="тип" Binding="{Binding тип}"></DataGridTextColumn>
+                <DataGridTextColumn Header="название" Binding="{Binding название}"></DataGridTextColumn>
+                <DataGridTextColumn Header="х-ка" Binding="{Binding характеристика}"></DataGridTextColumn>
+                <DataGridTextColumn Header="изготовитель" Binding="{Binding изготовитель}"></DataGridTextColumn>
+                <DataGridTextColumn Header="наличие на складе" Binding="{Binding наличие_на_складе}"></DataGridTextColumn>
+                <DataGridTextColumn Header="цена" Binding="{Binding цена, StringFormat={}{0} руб.}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.Header>
+                        <Label FontSize="14" Foreground="Green" FontWeight="Bold">Действия</Label>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Изменить" Height="30" Width="30" Margin="5" x:Name="EditBt" Click="EditBt_Click"/>
+
+
+                                <Button Content="Удалить" Height="30" Width="30" Margin="5" x:Name="DeleteBt" Click="DeleteBt_Click"/>
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="76" x:Name="AddBut" Click="AddBut_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-4.556"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+
+        <Button Content="Button" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="75" x:Name="ExelBt" Click="ExelBt_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="253,18,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" x:Name="SerchText"/>
+        <ComboBox HorizontalAlignment="Left" Margin="390,18,0,0" VerticalAlignment="Top" Width="120" x:Name="SpisokBox">
+            <TextBlock><Run Text="цена"/></TextBlock>
+            <TextBlock><Run Text="тип"/></TextBlock>
+            <TextBlock><Run Text="название"/></TextBlock>
+            <TextBlock><Run Text="х-ка"/></TextBlock>
+            <TextBlock><Run Text="изготовитель"/></TextBlock>
+            <TextBlock><Run Text="наличие на складе"/></TextBlock>
+        </ComboBox>
+        <Button Content="поиск" HorizontalAlignment="Left" Margin="524,11,0,0" VerticalAlignment="Top" Width="37" Height="34" x:Name="PoiskBut" Click="PoiskBut_Click"/>
+        <Label Content="Label" Margin="683,15,79,0" VerticalAlignment="Top" x:Name="CounterLabel"/>
+        <Button Content="сброс" HorizontalAlignment="Left" Margin="566,15,0,0" VerticalAlignment="Top" Width="75" x:Name="SbrosBut" Click="SbrosBut_Click"/>
+    </Grid>
+</Page>

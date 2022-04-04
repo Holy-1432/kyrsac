@@ -1,0 +1,31 @@
+﻿<Window x:Class="kyrsac.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kyrsac"
+        mc:Ignorable="d"
+        Title="ЭЛЕКОМ" Height="561.885" Width="1023.393" Icon="icon.png" Background="Red">
+    <Grid x:Name="MainGrid" Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="340*"/>
+            <RowDefinition Height="33*"/>
+        </Grid.RowDefinitions>
+
+        <Frame x:Name="MainFrame" Margin="0,26,0,0" Grid.Row="1"/>
+        <Button x:Name="GlMain" Content="Главная" Background="Gray" Foreground="Black" BorderBrush="Gray" Click="GlMain_Click" FontSize="16" Margin="121,0,717,2" />
+        <Button x:Name="katalogMain" Content="Каталог товаров" Margin="499,0,312,0" Background="Gray" Foreground="Black" BorderBrush="Gray" Click="katalogMain_Click" FontSize="16" />
+        <Button x:Name="ZakazMain" Content="Заказы" Margin="708,0,136,2" Background="Gray" Foreground="Black" BorderBrush="Gray" Click="ZakazMain_Click" FontSize="16" />
+        <Button x:Name="OtchetMain" Content="Отчеты" Margin="897,4,10,2" Background="Gray" Foreground="Black" BorderBrush="Gray" Click="OtchetMain_Click" FontSize="16" />
+        <Button x:Name="klientMain" Content="Список клиентов" Margin="291,0,516,2" Background="Gray" Foreground="Black" BorderBrush="Gray" Click="klientMain_Click" FontSize="16" />
+        <Image Source="elekom.jpg" HorizontalAlignment="Left" Height="50" Margin="0,-1,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
+        <Label Content="телефон: 8-800-555-35-55" Margin="51,7,388,0" Grid.Row="2" FontSize="12" />
+        <Image Source="gps.jpg" HorizontalAlignment="Left" Height="23" Margin="574,7,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
+        <Label Content="e-mail: ekompanenty@mail.ru" Margin="324,7,125,0" Grid.Row="2" FontSize="12" />
+        <Image Source="emaill.jpg" HorizontalAlignment="Left" Height="29" Margin="291,7,0,-3" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
+        <Label Content="Адресс: Новотроицк, ул.Советская, 85" Margin="591,7,31,0" Grid.Row="2" FontSize="12" Grid.ColumnSpan="2" />
+        <Image Source="image-removebg-preview__5_-removebg-preview (1).png" HorizontalAlignment="Left" Height="22" Margin="24,7,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище dbZavgorodModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="все_заказы">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="int" Nullable="false" />
+          <Property Name="код_клиента" Type="int" />
+          <Property Name="дата_заказа" Type="datetime" />
+          <Property Name="место доставки" Type="nvarchar" MaxLength="255" />
+          <Property Name="сумма заказа" Type="money" />
+        </EntityType>
+        <EntityType Name="клиент">
+          <Key>
+            <PropertyRef Name="код_клиента" />
+          </Key>
+          <Property Name="код_клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="255" />
+          <Property Name="телефон" Type="nvarchar" MaxLength="255" />
+          <Property Name="адрес" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "dbZavgorod.dbo.общий_заказ" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="общий_заказ">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="int" Nullable="false" />
+          <Property Name="код_клиента" Type="int" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="255" />
+          <Property Name="имя" Type="nvarchar" MaxLength="255" />
+          <Property Name="отчество" Type="nvarchar" MaxLength="255" />
+          <Property Name="телефон" Type="nvarchar" MaxLength="255" />
+          <Property Name="дата_заказа" Type="datetime" />
+          <Property Name="место доставки" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "dbZavgorod.dbo.общий_поставка" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="общий_поставка">
+          <Key>
+            <PropertyRef Name="номер_поставки" />
+          </Key>
+          <Property Name="номер_поставки" Type="int" Nullable="false" />
+          <Property Name="код_товара" Type="int" />
+          <Property Name="тип" Type="nvarchar" MaxLength="255" />
+          <Property Name="название" Type="nvarchar" MaxLength="255" />
+          <Property Name="id_поставщика" Type="int" />
+          <Property Name="название_поставщика" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "dbZavgorod.dbo.отсток_на_складе" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="отсток_на_складе">
+          <Key>
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_товара" Type="int" Nullable="false" />
+          <Property Name="тип" Type="nvarchar" MaxLength="255" />
+          <Property Name="название" Type="nvarchar" MaxLength="255" />
+          <Property Name="характеристика" Type="nvarchar" MaxLength="255" />
+          <Property Name="изготовитель" Type="nvarchar" MaxLength="255" />
+          <Property Name="цена" Type="money" />
+          <Property Name="остаток_на_складе" Type="float" />
+        </EntityType>
+        <EntityType Name="поставка">
+          <Key>
+            <PropertyRef Name="номер_поставки" />
+          </Key>
+          <Property Name="номер_поставки" Type="int" Nullable="false" />
+          <Property Name="количество" Type="int" />
+          <Property Name="код_товара" Type="int" />
+          <Property Name="id_поставщика" Type="int" />
+          <Property Name="дата поставки" Type="date" />
+          <Property Name="сумма поставки" Type="money" />
+        </EntityType>
+        <EntityType Name="поставщик">
+          <Key>
+            <PropertyRef Name="код_поставщика" />
+          </Key>
+          <Property Name="код_поставщика" Type="int" Nullable="false" />
+          <Property Name="название_поставщика" Type="nvarchar" MaxLength="255" />
+          <Property Name="телефон" Type="nvarchar" MaxLength="255" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="состав_заказа">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_заказа" Type="int" Nullable="false" />
+          <Property Name="код_товара" Type="int" Nullable="false" />
+          <Property Name="количество_товара" Type="int" />
+          <Property Name="цена продажи" Type="money" />
+          <Property Name="общая стоимость" Type="money" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "dbZavgorod.dbo.суммарная_стоимость" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="суммарная_стоимость">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="int" Nullable="false" />
+          <Property Name="дата_заказа" Type="datetime" />
+          <Property Name="Sum-итоговая_стоимость" Type="money" />
+        </EntityType>
+        <EntityType Name="товар">
+          <Key>
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="тип" Type="nvarchar" MaxLength="255" />
+          <Property Name="название" Type="nvarchar" MaxLength="255" />
+          <Property Name="характеристика" Type="nvarchar" MaxLength="255" />
+          <Property Name="изготовитель" Type="nvarchar" MaxLength="255" />
+          <Property Name="наличие_на_складе" Type="nvarchar" MaxLength="255" />
+          <Property Name="цена" Type="money" />
+        </EntityType>
+        <Association Name="FK_все_заказы_клиент">
+          <End Role="клиент" Type="Self.клиент" Multiplicity="0..1" />
+          <End Role="все_заказы" Type="Self.все_заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиент">
+              <PropertyRef Name="код_клиента" />
+            </Principal>
+            <Dependent Role="все_заказы">
+              <PropertyRef Name="код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_поставка_поставщик">
+          <End Role="поставщик" Type="Self.поставщик" Multiplicity="0..1" />
+          <End Role="поставка" Type="Self.поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поставщик">
+              <PropertyRef Name="код_поставщика" />
+            </Principal>
+            <Dependent Role="поставка">
+              <PropertyRef Name="id_поставщика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_поставка_товар">
+          <End Role="товар" Type="Self.товар" Multiplicity="0..1" />
+          <End Role="поставка" Type="Self.поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товар">
+              <PropertyRef Name="код_товара" />
+            </Principal>
+            <Dependent Role="поставка">
+              <PropertyRef Name="код_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_состав_заказа_все_заказы">
+          <End Role="все_заказы" Type="Self.все_заказы" Multiplicity="1" />
+          <End Role="состав_заказа" Type="Self.состав_заказа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="все_заказы">
+              <PropertyRef Name="код_заказа" />
+            </Principal>
+            <Dependent Role="состав_заказа">
+              <PropertyRef Name="код_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_состав_заказа_товар">
+          <End Role="товар" Type="Self.товар" Multiplicity="1" />
+          <End Role="состав_заказа" Type="Self.состав_заказа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товар">
+              <PropertyRef Name="код_товара" />
+            </Principal>
+            <Dependent Role="состав_заказа">
+              <PropertyRef Name="код_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище dbZavgorodModel1Container">
+          <EntitySet Name="все_заказы" EntityType="Self.все_заказы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="клиент" EntityType="Self.клиент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="поставка" EntityType="Self.поставка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="поставщик" EntityType="Self.поставщик" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="состав_заказа" EntityType="Self.состав_заказа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="товар" EntityType="Self.товар" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="общий_заказ" EntityType="Self.общий_заказ" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [общий_заказ].[код_заказа] AS [код_заказа], 
+    [общий_заказ].[код_клиента] AS [код_клиента], 
+    [общий_заказ].[фамилия] AS [фамилия], 
+    [общий_заказ].[имя] AS [имя], 
+    [общий_заказ].[отчество] AS [отчество], 
+    [общий_заказ].[телефон] AS [телефон], 
+    [общий_заказ].[дата_заказа] AS [дата_заказа], 
+    [общий_заказ].[место доставки] AS [место доставки]
+    FROM [dbo].[общий_заказ] AS [общий_заказ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="общий_поставка" EntityType="Self.общий_поставка" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [общий_поставка].[номер_поставки] AS [номер_поставки], 
+    [общий_поставка].[код_товара] AS [код_товара], 
+    [общий_поставка].[тип] AS [тип], 
+    [общий_поставка].[название] AS [название], 
+    [общий_поставка].[id_поставщика] AS [id_поставщика], 
+    [общий_поставка].[название_поставщика] AS [название_поставщика]
+    FROM [dbo].[общий_поставка] AS [общий_поставка]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="отсток_на_складе" EntityType="Self.отсток_на_складе" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [отсток_на_складе].[код_товара] AS [код_товара], 
+    [отсток_на_складе].[тип] AS [тип], 
+    [отсток_на_складе].[название] AS [название], 
+    [отсток_на_складе].[характеристика] AS [характеристика], 
+    [отсток_на_складе].[изготовитель] AS [изготовитель], 
+    [отсток_на_складе].[цена] AS [цена], 
+    [отсток_на_складе].[остаток_на_складе] AS [остаток_на_складе]
+    FROM [dbo].[отсток_на_складе] AS [отсток_на_складе]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="суммарная_стоимость" EntityType="Self.суммарная_стоимость" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [суммарная_стоимость].[код_заказа] AS [код_заказа], 
+    [суммарная_стоимость].[дата_заказа] AS [дата_заказа], 
+    [суммарная_стоимость].[Sum-итоговая_стоимость] AS [Sum-итоговая_стоимость]
+    FROM [dbo].[суммарная_стоимость] AS [суммарная_стоимость]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_все_заказы_клиент" Association="Self.FK_все_заказы_клиент">
+            <End Role="клиент" EntitySet="клиент" />
+            <End Role="все_заказы" EntitySet="все_заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_поставка_поставщик" Association="Self.FK_поставка_поставщик">
+            <End Role="поставщик" EntitySet="поставщик" />
+            <End Role="поставка" EntitySet="поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_поставка_товар" Association="Self.FK_поставка_товар">
+            <End Role="товар" EntitySet="товар" />
+            <End Role="поставка" EntitySet="поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_состав_заказа_все_заказы" Association="Self.FK_состав_заказа_все_заказы">
+            <End Role="все_заказы" EntitySet="все_заказы" />
+            <End Role="состав_заказа" EntitySet="состав_заказа" />
+          </AssociationSet>
+          <AssociationSet Name="FK_состав_заказа_товар" Association="Self.FK_состав_заказа_товар">
+            <End Role="товар" EntitySet="товар" />
+            <End Role="состав_заказа" EntitySet="состав_заказа" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbZavgorodModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="все_заказы">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="Int32" Nullable="false" />
+          <Property Name="код_клиента" Type="Int32" />
+          <Property Name="дата_заказа" Type="DateTime" Precision="3" />
+          <Property Name="место_доставки" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="сумма_заказа" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="клиент" Relationship="Self.FK_все_заказы_клиент" FromRole="все_заказы" ToRole="клиент" />
+          <NavigationProperty Name="состав_заказа" Relationship="Self.FK_состав_заказа_все_заказы" FromRole="все_заказы" ToRole="состав_заказа" />
+        </EntityType>
+        <EntityType Name="клиент">
+          <Key>
+            <PropertyRef Name="код_клиента" />
+          </Key>
+          <Property Name="код_клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="телефон" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="все_заказы" Relationship="Self.FK_все_заказы_клиент" FromRole="клиент" ToRole="все_заказы" />
+        </EntityType>
+        <EntityType Name="поставка">
+          <Key>
+            <PropertyRef Name="номер_поставки" />
+          </Key>
+          <Property Name="номер_поставки" Type="Int32" Nullable="false" />
+          <Property Name="количество" Type="Int32" />
+          <Property Name="код_товара" Type="Int32" />
+          <Property Name="id_поставщика" Type="Int32" />
+          <Property Name="дата_поставки" Type="DateTime" Precision="0" />
+          <Property Name="сумма_поставки" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="поставщик" Relationship="Self.FK_поставка_поставщик" FromRole="поставка" ToRole="поставщик" />
+          <NavigationProperty Name="товар" Relationship="Self.FK_поставка_товар" FromRole="поставка" ToRole="товар" />
+        </EntityType>
+        <EntityType Name="поставщик">
+          <Key>
+            <PropertyRef Name="код_поставщика" />
+          </Key>
+          <Property Name="код_поставщика" Type="Int32" Nullable="false" />
+          <Property Name="название_поставщика" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="телефон" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="поставка" Relationship="Self.FK_поставка_поставщик" FromRole="поставщик" ToRole="поставка" />
+        </EntityType>
+        <EntityType Name="состав_заказа">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_заказа" Type="Int32" Nullable="false" />
+          <Property Name="код_товара" Type="Int32" Nullable="false" />
+          <Property Name="количество_товара" Type="Int32" />
+          <Property Name="цена_продажи" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="общая_стоимость" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="все_заказы" Relationship="Self.FK_состав_заказа_все_заказы" FromRole="состав_заказа" ToRole="все_заказы" />
+          <NavigationProperty Name="товар" Relationship="Self.FK_состав_заказа_товар" FromRole="состав_заказа" ToRole="товар" />
+        </EntityType>
+        <EntityType Name="товар">
+          <Key>
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_товара" Type="Int32" Nullable="false" />
+          <Property Name="тип" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="характеристика" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="изготовитель" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="наличие_на_складе" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="цена" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="поставка" Relationship="Self.FK_поставка_товар" FromRole="товар" ToRole="поставка" />
+          <NavigationProperty Name="состав_заказа" Relationship="Self.FK_состав_заказа_товар" FromRole="товар" ToRole="состав_заказа" />
+        </EntityType>
+        <EntityType Name="общий_заказ">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="Int32" Nullable="false" />
+          <Property Name="код_клиента" Type="Int32" />
+          <Property Name="фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="телефон" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="дата_заказа" Type="DateTime" Precision="3" />
+          <Property Name="место_доставки" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="общий_поставка">
+          <Key>
+            <PropertyRef Name="номер_поставки" />
+          </Key>
+          <Property Name="номер_поставки" Type="Int32" Nullable="false" />
+          <Property Name="код_товара" Type="Int32" />
+          <Property Name="тип" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id_поставщика" Type="Int32" />
+          <Property Name="название_поставщика" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="отсток_на_складе">
+          <Key>
+            <PropertyRef Name="код_товара" />
+          </Key>
+          <Property Name="код_товара" Type="Int32" Nullable="false" />
+          <Property Name="тип" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="характеристика" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="изготовитель" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="цена" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="остаток_на_складе" Type="Double" />
+        </EntityType>
+        <EntityType Name="суммарная_стоимость">
+          <Key>
+            <PropertyRef Name="код_заказа" />
+          </Key>
+          <Property Name="код_заказа" Type="Int32" Nullable="false" />
+          <Property Name="дата_заказа" Type="DateTime" Precision="3" />
+          <Property Name="Sum_итоговая_стоимость" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK_все_заказы_клиент">
+          <End Role="клиент" Type="Self.клиент" Multiplicity="0..1" />
+          <End Role="все_заказы" Type="Self.все_заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиент">
+              <PropertyRef Name="код_клиента" />
+            </Principal>
+            <Dependent Role="все_заказы">
+              <PropertyRef Name="код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_состав_заказа_все_заказы">
+          <End Role="все_заказы" Type="Self.все_заказы" Multiplicity="1" />
+          <End Role="состав_заказа" Type="Self.состав_заказа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="все_заказы">
+              <PropertyRef Name="код_заказа" />
+            </Principal>
+            <Dependent Role="состав_заказа">
+              <PropertyRef Name="код_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_поставка_поставщик">
+          <End Role="поставщик" Type="Self.поставщик" Multiplicity="0..1" />
+          <End Role="поставка" Type="Self.поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поставщик">
+              <PropertyRef Name="код_поставщика" />
+            </Principal>
+            <Dependent Role="поставка">
+              <PropertyRef Name="id_поставщика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_поставка_товар">
+          <End Role="товар" Type="Self.товар" Multiplicity="0..1" />
+          <End Role="поставка" Type="Self.поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товар">
+              <PropertyRef Name="код_товара" />
+            </Principal>
+            <Dependent Role="поставка">
+              <PropertyRef Name="код_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_состав_заказа_товар">
+          <End Role="товар" Type="Self.товар" Multiplicity="1" />
+          <End Role="состав_заказа" Type="Self.состав_заказа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товар">
+              <PropertyRef Name="код_товара" />
+            </Principal>
+            <Dependent Role="состав_заказа">
+              <PropertyRef Name="код_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbZavgorodEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="все_заказы" EntityType="Self.все_заказы" />
+          <EntitySet Name="клиент" EntityType="Self.клиент" />
+          <EntitySet Name="поставка" EntityType="Self.поставка" />
+          <EntitySet Name="поставщик" EntityType="Self.поставщик" />
+          <EntitySet Name="состав_заказа" EntityType="Self.состав_заказа" />
+          <EntitySet Name="товар" EntityType="Self.товар" />
+          <EntitySet Name="общий_заказ" EntityType="Self.общий_заказ" />
+          <EntitySet Name="общий_поставка" EntityType="Self.общий_поставка" />
+          <EntitySet Name="отсток_на_складе" EntityType="Self.отсток_на_складе" />
+          <EntitySet Name="суммарная_стоимость" EntityType="Self.суммарная_стоимость" />
+          <AssociationSet Name="FK_все_заказы_клиент" Association="Self.FK_все_заказы_клиент">
+            <End Role="клиент" EntitySet="клиент" />
+            <End Role="все_заказы" EntitySet="все_заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_состав_заказа_все_заказы" Association="Self.FK_состав_заказа_все_заказы">
+            <End Role="все_заказы" EntitySet="все_заказы" />
+            <End Role="состав_заказа" EntitySet="состав_заказа" />
+          </AssociationSet>
+          <AssociationSet Name="FK_поставка_поставщик" Association="Self.FK_поставка_поставщик">
+            <End Role="поставщик" EntitySet="поставщик" />
+            <End Role="поставка" EntitySet="поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_поставка_товар" Association="Self.FK_поставка_товар">
+            <End Role="товар" EntitySet="товар" />
+            <End Role="поставка" EntitySet="поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_состав_заказа_товар" Association="Self.FK_состав_заказа_товар">
+            <End Role="товар" EntitySet="товар" />
+            <End Role="состав_заказа" EntitySet="состав_заказа" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dbZavgorodModel1Container" CdmEntityContainer="dbZavgorodEntities1">
+          <EntitySetMapping Name="все_заказы">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.все_заказы">
+              <MappingFragment StoreEntitySet="все_заказы">
+                <ScalarProperty Name="код_заказа" ColumnName="код_заказа" />
+                <ScalarProperty Name="код_клиента" ColumnName="код_клиента" />
+                <ScalarProperty Name="дата_заказа" ColumnName="дата_заказа" />
+                <ScalarProperty Name="место_доставки" ColumnName="место доставки" />
+                <ScalarProperty Name="сумма_заказа" ColumnName="сумма заказа" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="клиент">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.клиент">
+              <MappingFragment StoreEntitySet="клиент">
+                <ScalarProperty Name="код_клиента" ColumnName="код_клиента" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="адрес" ColumnName="адрес" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="поставка">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.поставка">
+              <MappingFragment StoreEntitySet="поставка">
+                <ScalarProperty Name="номер_поставки" ColumnName="номер_поставки" />
+                <ScalarProperty Name="количество" ColumnName="количество" />
+                <ScalarProperty Name="код_товара" ColumnName="код_товара" />
+                <ScalarProperty Name="id_поставщика" ColumnName="id_поставщика" />
+                <ScalarProperty Name="дата_поставки" ColumnName="дата поставки" />
+                <ScalarProperty Name="сумма_поставки" ColumnName="сумма поставки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="поставщик">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.поставщик">
+              <MappingFragment StoreEntitySet="поставщик">
+                <ScalarProperty Name="код_поставщика" ColumnName="код_поставщика" />
+                <ScalarProperty Name="название_поставщика" ColumnName="название_поставщика" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="состав_заказа">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.состав_заказа">
+              <MappingFragment StoreEntitySet="состав_заказа">
+                <ScalarProperty Name="код_заказа" ColumnName="код_заказа" />
+                <ScalarProperty Name="код_товара" ColumnName="код_товара" />
+                <ScalarProperty Name="количество_товара" ColumnName="количество_товара" />
+                <ScalarProperty Name="цена_продажи" ColumnName="цена продажи" />
+                <ScalarProperty Name="общая_стоимость" ColumnName="общая стоимость" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="товар">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.товар">
+              <MappingFragment StoreEntitySet="товар">
+                <ScalarProperty Name="код_товара" ColumnName="код_товара" />
+                <ScalarProperty Name="тип" ColumnName="тип" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="характеристика" ColumnName="характеристика" />
+                <ScalarProperty Name="изготовитель" ColumnName="изготовитель" />
+                <ScalarProperty Name="наличие_на_складе" ColumnName="наличие_на_складе" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="общий_заказ">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.общий_заказ">
+              <MappingFragment StoreEntitySet="общий_заказ">
+                <ScalarProperty Name="код_заказа" ColumnName="код_заказа" />
+                <ScalarProperty Name="код_клиента" ColumnName="код_клиента" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="дата_заказа" ColumnName="дата_заказа" />
+                <ScalarProperty Name="место_доставки" ColumnName="место доставки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="общий_поставка">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.общий_поставка">
+              <MappingFragment StoreEntitySet="общий_поставка">
+                <ScalarProperty Name="номер_поставки" ColumnName="номер_поставки" />
+                <ScalarProperty Name="код_товара" ColumnName="код_товара" />
+                <ScalarProperty Name="тип" ColumnName="тип" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id_поставщика" ColumnName="id_поставщика" />
+                <ScalarProperty Name="название_поставщика" ColumnName="название_поставщика" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="отсток_на_складе">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.отсток_на_складе">
+              <MappingFragment StoreEntitySet="отсток_на_складе">
+                <ScalarProperty Name="код_товара" ColumnName="код_товара" />
+                <ScalarProperty Name="тип" ColumnName="тип" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="характеристика" ColumnName="характеристика" />
+                <ScalarProperty Name="изготовитель" ColumnName="изготовитель" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+                <ScalarProperty Name="остаток_на_складе" ColumnName="остаток_на_складе" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="суммарная_стоимость">
+            <EntityTypeMapping TypeName="dbZavgorodModel1.суммарная_стоимость">
+              <MappingFragment StoreEntitySet="суммарная_стоимость">
+                <ScalarProperty Name="код_заказа" ColumnName="код_заказа" />
+                <ScalarProperty Name="дата_заказа" ColumnName="дата_заказа" />
+                <ScalarProperty Name="Sum_итоговая_стоимость" ColumnName="Sum-итоговая_стоимость" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+﻿<Page x:Class="kyrsac.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsac.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid Background="Gray">
+        <Image Source="klema.jpg" HorizontalAlignment="Left" Height="132" Margin="0,96,0,0" VerticalAlignment="Top" Width="352" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Клеммники для монтажа на печатные платы от TE Connectivity &#xD;&#xA;отличаются широтой модельного ряда и способами монтажа &#xD;&#xA;провода, включая зажимы, нажимные пружины и винтовые &#xD;&#xA;контакты. Ответные стыковочные части клеммников &#xD;&#xA;выпускаются как в прямой, так и угловой модификации." Margin="0,233,426,48" />
+        <Image Source="unit.jpg" HorizontalAlignment="Left" Height="132" Margin="442,96,0,0" VerticalAlignment="Top" Width="348" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Серия UT-33+ - это полностью обновленная и улучшенная серия &#xD;&#xA;популярной модели UT-33. Все приборы UT-33+ имеют оптимальный &#xD;&#xA;базовый набор измерений, но в каждом мультиметре серии имеется &#xD;&#xA;своя индивидуальная особенность. Новый ЖК дисплей обеспечивает &#xD;&#xA;лучший пользовательский интерфейс. Все мультиметры изготовлены так, &#xD;&#xA;чтобы обеспечивать безопасность по стандарту САТ II 600В." Margin="448,233,20,48" />
+    </Grid>
+</Page>

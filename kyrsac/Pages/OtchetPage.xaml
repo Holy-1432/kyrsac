@@ -1,0 +1,16 @@
+﻿<Page x:Class="kyrsac.Pages.OtchetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsac.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OtchetPage">
+
+    <Grid Background="Gray" >
+        <Button Content="Поставка" HorizontalAlignment="Left" Margin="275,140,0,0" VerticalAlignment="Top" Width="273" Height="67" x:Name="PostavkaBut" Click="PostavkaBut_Click"/>
+        <Button Content="Поставщик" HorizontalAlignment="Left" Margin="275,247,0,0" VerticalAlignment="Top" Width="273" Height="67" x:Name="PostavshikBut" Click="PostavshikBut_Click"/>
+
+    </Grid>
+</Page>

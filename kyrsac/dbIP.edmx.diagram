@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b298096875c4e59aad69951a1149a59" Name="Diagram1">
+        <EntityTypeShape EntityType="dbZavgorodModel.все_заказы" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbZavgorodModel.клиент" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbZavgorodModel.поставка" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbZavgorodModel.поставщик" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbZavgorodModel.состав_заказа" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbZavgorodModel.товар" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="dbZavgorodModel.FK_все_заказы_клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="dbZavgorodModel.FK_состав_заказа_все_заказы" ManuallyRouted="false" />
+        <AssociationConnector Association="dbZavgorodModel.FK_поставка_поставщик" ManuallyRouted="false" />
+        <AssociationConnector Association="dbZavgorodModel.FK_поставка_товар" ManuallyRouted="false" />
+        <AssociationConnector Association="dbZavgorodModel.FK_состав_заказа_товар" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbZavgorodModel.Security" Width="1.5" PointX="3.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
