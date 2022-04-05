@@ -16,7 +16,7 @@ namespace kyrsac
     public partial class dbZavgorodEntities2 : DbContext
     {
         public dbZavgorodEntities2()
-            : base("name=DBConnection")
+            : base("name=dbZavgorodEntities2")
         {
         }
     
