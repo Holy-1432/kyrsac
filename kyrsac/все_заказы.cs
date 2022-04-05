@@ -11,7 +11,9 @@ namespace kyrsac
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Data.Entity;
+
     public partial class все_заказы
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +21,8 @@ namespace kyrsac
         {
             this.состав_заказа = new HashSet<состав_заказа>();
         }
-    
-        public int код_заказа { get; set; }
+        [Key]
+        public int код_заказа { get; set; } //
         public Nullable<int> код_клиента { get; set; }
         public Nullable<System.DateTime> дата_заказа { get; set; }
         public string место_доставки { get; set; }

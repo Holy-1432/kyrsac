@@ -11,7 +11,8 @@ namespace kyrsac
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class поставщик
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,12 @@ namespace kyrsac
         {
             this.поставка = new HashSet<поставка>();
         }
-    
-        public int код_поставщика { get; set; }
+        [Key]
+        public int код_поставщика { get; set; }//код_поставщика
         public string название_поставщика { get; set; }
         public string телефон { get; set; }
         public string email { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<поставка> поставка { get; set; }
     }

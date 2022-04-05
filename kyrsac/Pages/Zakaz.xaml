@@ -10,20 +10,19 @@
 
     <Grid Background="Gray" Margin="0,0,-35,0" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="42*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="169*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="176*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="ZakazGrid"  AutoGenerateColumns="False" Margin="0,68,0,17" Grid.RowSpan="2" >
+        <DataGrid x:Name="DataGridAllOrders"  AutoGenerateColumns="False" Margin="0,6,0,4" Grid.Row="1" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Код заказа" Binding="{Binding код_заказа}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код заказа" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Код клиента" Binding="{Binding код_клиента}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ФИО клиента" Binding="{Binding клиент.ФИО}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата заказа" Binding="{Binding дата_заказа, StringFormat={}{0:dd.MM.yyyy}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Место доставки" Binding="{Binding место_доставки}"></DataGridTextColumn>
                 <DataGridTextColumn Header="сумма заказа" Binding="{Binding сумма_заказа}"></DataGridTextColumn>
-
-
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.Header>
@@ -35,20 +34,18 @@
                                 <Button Content="ИЗМ" x:Name="EditBut" Height="30" Width="30" Margin="5" Click="EditBut_Click_1">
 
                                 </Button>
-                                <Button Content="УД" x:Name="DeleteBut" Height="30" Width="30" Margin="5" Click="DeleteBut_Click_1">
-
-                                </Button>
+                                <Button Content="УД" x:Name="ButtonDeleteOrder" Height="30" Width="30" Margin="5" Click="ButtonDeleteOrder_Click"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Показать состав заказа" Click="Button_Click" HorizontalAlignment="Left" Margin="592,73,0,0" VerticalAlignment="Top" Width="185" Height="33" Grid.Row="1" Grid.RowSpan="2"/>
+        
 
-        <DataGrid x:Name="SostavGrid" Margin="0,21,0,0" Grid.Row="2"  AutoGenerateColumns="False">
+        <DataGrid x:Name="DataGridPacksOfSelectedOrder" Margin="0,21,0,0" Grid.Row="3"  AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Код заказа" Binding="{Binding код_заказа}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код заказа" Binding="{Binding все_заказы.Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Код товара" Binding="{Binding код_товара}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Товар" Binding="{Binding товар.название}"></DataGridTextColumn>
                 <DataGridTextColumn Header="количество" Binding="{Binding количество_товара}"></DataGridTextColumn>
@@ -64,7 +61,7 @@
                                 <Button Content="ИЗМ" x:Name="EditBut" Height="30" Width="30" Margin="5" Click="EditBut_Click">
 
                                 </Button>
-                                <Button Content="УД" x:Name="DeleteBut" Height="30" Width="30" Margin="5" Click="DeleteBut_Click">
+                                <Button Content="УД" x:Name="ButtonDeletePackOfOrder" Click="ButtonDeletePackOfOrder_Click" Height="30" Width="30" Margin="5">
 
                                 </Button>
                             </StackPanel>
@@ -73,17 +70,18 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Добавить " HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="75" x:Name="AddKLbt" Click="AddKLbt_Click"/>
+        <Button Content="Добавить " HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="75" x:Name="AddKLbt" Click="AddKLbt_Click" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="309,7,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" x:Name="SerchText"/>
-        <ComboBox HorizontalAlignment="Left" Margin="446,7,0,0" VerticalAlignment="Top" Width="120" x:Name="SpisokBox">
+        <ComboBox HorizontalAlignment="Left" Margin="446,7,0,0" VerticalAlignment="Top" Width="120" x:Name="SpisokBox" Height="27">
             <TextBlock><Run Text="//"/></TextBlock>
             <TextBlock><Run Text="//"/></TextBlock>
             <TextBlock><Run Text="Адрес//"/></TextBlock>
         </ComboBox>
         <Button Content="поиск" HorizontalAlignment="Left" Margin="580,0,0,0" VerticalAlignment="Top" Width="37" Height="34" x:Name="PoiskBut" Click="PoiskBut_Click"/>
-        <Label Content="Label" Margin="739,4,23,0" VerticalAlignment="Top" x:Name="CounterLabel"/>
-        <Button Content="сброс" HorizontalAlignment="Left" Margin="622,4,0,0" VerticalAlignment="Top" Width="75" x:Name="SbrosBut" Click="SbrosBut_Click"/>
-        <Button Content="Посмотреть отчет" HorizontalAlignment="Left" Margin="125,5,0,0" VerticalAlignment="Top" Width="148" x:Name="ExelBt" Click="ExelBt_Click"/>
-        <Button Content="Посмотреть отчет" HorizontalAlignment="Left" Margin="65,77,0,0" VerticalAlignment="Top" Width="148" x:Name="ExelBt_Copy" Click="ExelBt_Copy_Click" Grid.Row="1" Grid.RowSpan="2"/>
+        <Label Content="Label" Margin="739,4,23,0" VerticalAlignment="Top" x:Name="CounterLabel" Height="31"/>
+        <Button Content="сброс" HorizontalAlignment="Left" Margin="622,4,0,0" VerticalAlignment="Top" Width="75" x:Name="SbrosBut" Click="SbrosBut_Click" Height="25"/>
+        <Button Content="Посмотреть отчет" HorizontalAlignment="Left" Margin="125,5,0,0" VerticalAlignment="Top" Width="148" x:Name="ExelBt" Click="ExelBt_Click" Height="25"/>
+        <Button Content="Посмотреть отчет" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="148" x:Name="ExelBt_Copy" Click="ExelBt_Copy_Click" Grid.Row="2" Height="32"/>
+        <Button Content="Показать состав заказа" x:Name="ButtonViewPackSelectedOrder" Click="ButtonViewPackSelectedOrder_Click" HorizontalAlignment="Left" Margin="400,10,0,0" VerticalAlignment="Top" Width="185" Height="32" Grid.Row="2"/>
     </Grid>
 </Page>

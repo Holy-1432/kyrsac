@@ -11,9 +11,10 @@ namespace kyrsac
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Security
     {
+        public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Description { get; set; }

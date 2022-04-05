@@ -11,10 +11,12 @@ namespace kyrsac
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class поставка
     {
-        public int номер_поставки { get; set; }
+        [Key]
+        public int номер_поставки { get; set; } //номер_поставки
         public Nullable<int> количество { get; set; }
         public Nullable<int> код_товара { get; set; }
         public Nullable<int> id_поставщика { get; set; }

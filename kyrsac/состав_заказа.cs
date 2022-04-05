@@ -11,15 +11,17 @@ namespace kyrsac
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class состав_заказа
     {
-        public int код_заказа { get; set; }
+        [Key]
+        public int код_заказа { get; set; } //код_заказа
         public int код_товара { get; set; }
         public Nullable<int> количество_товара { get; set; }
         public Nullable<decimal> цена_продажи { get; set; }
         public Nullable<decimal> общая_стоимость { get; set; }
-    
+
         public virtual все_заказы все_заказы { get; set; }
         public virtual товар товар { get; set; }
     }

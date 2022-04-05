@@ -9,15 +9,42 @@
       Title="AddTovarPage">
 
     <Grid Background="Gray">
-        <Label Content="Добавление товара" HorizontalAlignment="Left" Margin="247,10,0,0" VerticalAlignment="Top" Height="70" Width="292" FontSize="30"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="TipBox" Text="{Binding Myтовар.тип}"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,126,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NameBox" Text="{Binding Myтовар.название}"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,184,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="XaraktBox" Text="{Binding Myтовар.характеристика}"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,236,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="IzgBox" Text="{Binding Myтовар.изготовитель}"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,286,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NalichieBox" Text="{Binding Myтовар.наличие_на_складе}"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="247,335,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="ChenaBox" Text="{Binding Myтовар.цена}"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="544,165,0,0" VerticalAlignment="Top" Width="140" x:Name="SaveTovarBt" Click="SaveTovarBt_Click" Height="29"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Margin="544,236,0,0" VerticalAlignment="Top" Width="140" x:Name="EditTovarBt" Click="EditTovarBt_Click" Height="29"/>
+        <StackPanel Margin="200,-10,0,0">
+            <Label Content="Добавление товара" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="292" FontSize="30"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Тип товара" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="TipBox" Text="{Binding Myтовар.тип}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Название" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NameBox" Text="{Binding Myтовар.название}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Характеристика" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33" TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="XaraktBox" Text="{Binding Myтовар.характеристика}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Изготовитель" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="IzgBox" Text="{Binding Myтовар.изготовитель}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Наличие" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="NalichieBox" Text="{Binding Myтовар.наличие_на_складе}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Цена" Width="110"/>
+                <TextBox HorizontalAlignment="Left" Height="33"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="292" x:Name="ChenaBox" Text="{Binding Myтовар.цена}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" x:Name="SaveTovarBt" Click="SaveTovarBt_Click" Height="29" Margin="40,0"/>
+                <Button Content="Изменить" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="140" x:Name="EditTovarBt" Click="EditTovarBt_Click" Height="29"/>
+            </StackPanel>
+           
+            
+            
+            
+        </StackPanel>
+
 
     </Grid>
 </Page>

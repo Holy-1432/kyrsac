@@ -7,15 +7,46 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddZakazPage">
-
     <Grid Background="Gray">
-        <Label Content="Код клиента" HorizontalAlignment="Left" Margin="302,26,0,0" VerticalAlignment="Top" Width="271"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="302,70,0,0" TextWrapping="Wrap" x:Name="KodTB" VerticalAlignment="Top" Width="271"/>
-        <Label Content="Дата заказа" HorizontalAlignment="Left" Margin="302,112,0,0" VerticalAlignment="Top" Width="271"/>
-        <Label Content="Место доставки" HorizontalAlignment="Left" Margin="302,220,0,0" VerticalAlignment="Top" Width="271"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="302,246,0,0" TextWrapping="Wrap" x:Name="MestoBT" VerticalAlignment="Top" Width="271"/>
-        <DatePicker HorizontalAlignment="Left" Margin="302,163,0,0" VerticalAlignment="Top" Width="271" Height="39" x:Name="DataZak"/>
-        <Button Content="Сохранить" x:Name="SaveBt" Click="SaveBt_Click" HorizontalAlignment="Left" Margin="302,316,0,0" VerticalAlignment="Top" Width="271" Height="24"/>
+        <StackPanel Margin="60" Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="Код клиента" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="271"/>
+                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" x:Name="TextBoxClientCode" VerticalAlignment="Top" Width="271"/>
+                <Label Content="Дата заказа" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="271"/>
+                <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Top" Width="271" Height="39" x:Name="DatePickerOrderDate"/>
+                <Label Content="Место доставки" HorizontalAlignment="Left" VerticalAlignment="Top" Width="271"/>
+                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" x:Name="TextBoxPlaceOfDelivery" VerticalAlignment="Top" Width="271"/>
+                <Button Content="Сохранить" x:Name="ButtonSaveOrder" Click="ButtonSaveOrder_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="271" Height="24" Margin="0,22,0,0"/>
+            </StackPanel>
+            <StackPanel Margin="60,0,0,0">
+                <Label Content="Состав заказа" HorizontalAlignment="Center" VerticalAlignment="Top" Width="271"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <Label Width="80" Content="Товар" Margin="0,0,20,0"/>
+                    <ComboBox x:Name="ComboBoxListGoods" MinWidth="120" ItemsSource="{Binding Goods}" DisplayMemberPath="название" SelectionChanged="ComboBoxListGoods_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <Label Width="80" Content="Цена" Margin="0,0,20,0"/>
+                    <TextBlock x:Name="TextBlockPriceGood" MinWidth="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Width="80" Content="Количество" Margin="0,0,20,0"/>
+                    <TextBox x:Name="TextBoxCountGood" MinWidth="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button x:Name="ButtonAddOrderPack" Content="Добавить" Margin="0,0,50,0" Click="ButtonAddOrderPack_Click"/>
+                    <Button x:Name="ButtonRemoveGood" Content="Удалить" Click="ButtonRemoveGood_Click"/>
+                </StackPanel>
+                <DataGrid x:Name="DataGridOrderPacks" MinHeight="120" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название товара" Binding="{Binding товар.название}"/>
+                        <DataGridTextColumn Header="Количество" Binding="{Binding количество_товара}"/>
+                        <DataGridTextColumn Header="Цена продажи" Binding="{Binding цена_продажи}"/>
+                        <DataGridTextColumn Header="Общая стоимость" Binding="{Binding общая_стоимость}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+        
 
     </Grid>
 </Page>

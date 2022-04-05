@@ -16,14 +16,14 @@ namespace kyrsac
     public partial class dbZavgorodEntities2 : DbContext
     {
         public dbZavgorodEntities2()
-            : base("name=dbZavgorodEntities2")
+            : base("name=DBConnection")
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    throw new UnintentionalCodeFirstException();
+        //}
     
         public virtual DbSet<все_заказы> все_заказы { get; set; }
         public virtual DbSet<клиент> клиент { get; set; }

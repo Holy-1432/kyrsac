@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace kyrsac.Pages
 {
@@ -109,17 +109,17 @@ namespace kyrsac.Pages
         private void ExelBt_Click(object sender, RoutedEventArgs e)
         {
             //
-            var application = new Excel.Application();
+            var application = new Microsoft.Office.Interop.Excel.Application();
             application.Visible = true;
-            Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
+            Microsoft.Office.Interop.Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
 
-            Excel.Worksheet sheet1 = application.Worksheets.Item[1]; //Sheets[1];
+            Microsoft.Office.Interop.Excel.Worksheet sheet1 = application.Worksheets.Item[1]; //Sheets[1];
             sheet1.Name = "Клиенты ";
             //
 
             for (int j = 1; j< KlientGrid.Columns.Count; j++)
             {
-                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j];
+                Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[1, j];
                 //sheet1.Columns[j].ColumnWidth = 25;
                 myRange.Value2 = KlientGrid.Columns[j - 1].Header;
                 myRange.Font.Bold = true;

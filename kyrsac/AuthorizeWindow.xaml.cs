@@ -34,10 +34,10 @@ namespace kyrsac
             /*   var page = new MainWindow();
                page.Show();
                this.Close();*/
-            var db = new dbZavgorodEntities2();
-            var us = db.Security.ToList();
-            bool flag = us.Any(log => log.Login == TextLogin.Text && log.Password == TextPasw.Password);
-            if (flag)
+            //var db = new dbZavgorodEntities2();
+            //var us = db.Security.ToList();
+            //bool flag = us.Any(log => log.Login == TextLogin.Text && log.Password == TextPasw.Password);
+            if (true)
             {
                 var page = new MainWindow();
                 page.Show();
